@@ -27,7 +27,9 @@ Convert the switch statement into an object called lookup. Use it to look up val
 // Setup
 function phoneticLookup(val) {
   var result = "";
+
   // Only change code below this line
+
    var obj = {
     "alpha": "Adams",
     "bravo": "Boston",
