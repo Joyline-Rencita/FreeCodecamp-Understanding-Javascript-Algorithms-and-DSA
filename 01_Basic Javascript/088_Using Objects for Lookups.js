@@ -43,6 +43,7 @@ function phoneticLookup(val) {
 
   // Only change code above this line
   return result;
+
 }
 
 console.log(phoneticLookup("charlie"));
