@@ -19,3 +19,55 @@ Note: A copy of the recordCollection object is used for the tests. You should no
 
   SOLUTION:
 
+// Setup
+var collection = {
+  2548: {
+    album: "Slippery When Wet",
+    artist: "Bon Jovi",
+    tracks: [
+      "Let It Rock",
+      "You Give Love a Bad Name"
+    ]
+  },
+  2468: {
+    album: "1999",
+    artist: "Prince",
+    tracks: [
+      "1999",
+      "Little Red Corvette"
+    ]
+  },
+  1245: {
+    artist: "Robert Palmer",
+    tracks: []
+  },
+  5439: {
+    album: "ABBA Gold"
+  }
+};
+
+// Function to update records
+function updateRecords(records, id, prop, value) {
+  if (value === "") {
+    // Delete the property if value is an empty string
+    delete records[id][prop];
+  } else if (prop === "tracks") {
+    // If prop is "tracks" and the property doesn't exist, create an array
+    // Then, add the value to the array
+    records[id][prop] = records[id][prop] || [];
+    records[id][prop].push(value);
+  } else {
+    // For other properties, assign the value
+    records[id][prop] = value;
+  }
+  return records;
+}
+
+// Testing the function
+updateRecords(collection, 5439, "artist", "ABBA");
+updateRecords(collection, 5439, "tracks", "Take a Chance on Me");
+updateRecords(collection, 2548, "artist", "");
+updateRecords(collection, 1245, "tracks", "Addicted to Love");
+updateRecords(collection, 2468, "tracks", "Free");
+updateRecords(collection, 2548, "tracks", "");
+updateRecords(collection, 1245, "albumTitle", "Riptide");
