@@ -60,6 +60,5 @@ This exercise is designed to illustrate the difference between how var and let k
 
 //**************************
 
-
   Solution :
 
