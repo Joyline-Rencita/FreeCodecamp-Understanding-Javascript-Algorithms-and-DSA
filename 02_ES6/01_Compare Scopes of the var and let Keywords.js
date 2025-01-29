@@ -62,3 +62,17 @@ This exercise is designed to illustrate the difference between how var and let k
 
   Solution :
 
+function checkScope() {
+  "use strict";
+  let i = "function scope"; // Declare i using let
+  
+  if (true) {
+    let i = "block scope"; // This i is only available inside the if block
+    console.log("Block scope i is: ", i);
+  }
+  
+  console.log("Function scope i is: ", i);
+  return i;
+}
+
+checkScope();
