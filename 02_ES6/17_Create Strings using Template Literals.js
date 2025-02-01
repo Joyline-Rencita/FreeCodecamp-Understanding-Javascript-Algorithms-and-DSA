@@ -38,18 +38,21 @@ const result = {
   skipped: ["id-blacklist", "no-dup-keys"]
 };
 
+// Function to generate list items
 function makeList(arr) {
-  "use strict";
-
-  // Only change code below this line
-  const resultDisplayArray = [];
-  for (let item of arr) {
-    resultDisplayArray.push(`<li class="text-warning">${item}</li>`);
-  }
-  // Only change code above this line
-
-  return resultDisplayArray;
+  return arr.map(item => `<li class="text-warning">${item}</li>`);
 }
 
-const resultDisplayArray = makeList(result.failure);
-console.log(resultDisplayArray);
+// Call the function with the failure array
+const failuresList = makeList(result.failure);
+
+console.log(failuresList);
+/**
+ * Expected Output:
+ * [
+ *   '<li class="text-warning">no-var</li>',
+ *   '<li class="text-warning">var-on-top</li>',
+ *   '<li class="text-warning">linebreak</li>'
+ * ]
+ **/
+
