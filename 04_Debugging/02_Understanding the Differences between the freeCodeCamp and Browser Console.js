@@ -17,5 +17,6 @@ let output = "Get this to log once in the freeCodeCamp console and twice in the 
 // Run the tests to see the difference between the two consoles.
 
 // Now, add console.clear() before your console.log() to clear the browser console, and pass the tests.
-console.clear() 
-console.log(output)
+
+console.log(output);
+console.clear();
