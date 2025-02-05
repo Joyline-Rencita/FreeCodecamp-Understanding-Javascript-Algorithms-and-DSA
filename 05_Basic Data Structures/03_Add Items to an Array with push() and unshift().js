@@ -17,3 +17,12 @@ We have defined a function, mixedNumbers, which we are passing an array as an ar
 
   Solution :
 
+function mixedNumbers(arr) {
+  // Only change code below this line
+  arr.unshift('I', 2, 'three');
+  arr.push(7, 'VIII', 9);
+  // Only change code above this line
+  return arr;
+}
+
+console.log(mixedNumbers(['IV', 5, 'six']));
