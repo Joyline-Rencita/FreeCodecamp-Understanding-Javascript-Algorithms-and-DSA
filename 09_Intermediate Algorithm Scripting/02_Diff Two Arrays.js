@@ -2,9 +2,7 @@ Compare two arrays and return a new array with any items only found in one of th
 
 Note: You can return the array with its elements in any order.
 
-  //*******************************************************************************
-
+//*******************************************************************************
 
   Solution :
-
 
