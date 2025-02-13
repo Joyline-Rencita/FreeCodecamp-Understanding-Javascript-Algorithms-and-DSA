@@ -31,3 +31,5 @@ function pairElement(str) {
 }
 
 console.log(pairElement("GCG"));
+
+>>[ [ 'G', 'C' ], [ 'C', 'G' ], [ 'G', 'C' ] ]
