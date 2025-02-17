@@ -1,37 +1,46 @@
-document.getElementById("check-btn").addEventListener("click", validateNumber);
-document.getElementById("clear-btn").addEventListener("click", clearResults);
+const userInput = document.getElementById("user-input");
+const checkBtn = document.getElementById("check-btn");
+const clearBtn = document.getElementById("clear-btn");
+const resultsDiv = document.getElementById("results-div");
 
-function validateNumber() {
-    const userInput = document.getElementById("user-input").value.trim();
-    const resultDiv = document.getElementById("results-div");
+const checkValidNumber = (input) => {
+  if (input === "") {
+    alert("Please provide a phone number");
+    return;
+  }
+  const countryCode = "^(1\\s?)?";
+  const areaCode = "(\\([0-9]{3}\\)|[0-9]{3})";
+  const spacesDashes = "[\\s\\-]?";
+  const phoneNumber = "[0-9]{3}[\\s\\-]?[0-9]{4}$";
+  const phoneRegex = new RegExp(
+    `${countryCode}${areaCode}${spacesDashes}${phoneNumber}`,
+  );
 
-    if (!userInput) {
-        alert("Please provide a phone number");
-        return;
-    }
+  const pTag = document.createElement("p");
+  pTag.className = "results-text";
+  phoneRegex.test(input)
+    ? (pTag.style.color = "#00471b")
+    : (pTag.style.color = "#4d3800");
+  pTag.appendChild(
+    document.createTextNode(
+      `${phoneRegex.test(input) ? "Valid" : "Invalid"} US number: ${input}`,
+    ),
+  );
+  resultsDiv.appendChild(pTag);
+};
 
-    const validPatterns = [
-        /^1\s\d{3}-\d{3}-\d{4}$/,         // 1 555-555-5555
-        /^1\s\(\d{3}\)\s\d{3}-\d{4}$/,    // 1 (555) 555-5555
-        /^1\(\d{3}\)\d{3}-\d{4}$/,        // 1(555)555-5555
-        /^1\s\d{3}\s\d{3}\s\d{4}$/,       // 1 555 555 5555
-        /^\d{10}$/,                        // 5555555555
-        /^\d{3}-\d{3}-\d{4}$/,            // 555-555-5555
-        /^\(\d{3}\)\d{3}-\d{4}$/           // (555)555-5555
-    ];
+checkBtn.addEventListener("click", () => {
+  checkValidNumber(userInput.value);
+  userInput.value = "";
+});
 
-    const isValid = validPatterns.some(pattern => pattern.test(userInput));
+userInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    checkValidNumber(userInput.value);
+    userInput.value = "";
+  }
+});
 
-    if (isValid) {
-        resultDiv.textContent = `Valid US number: ${userInput}`;
-        resultDiv.style.color = "green";
-    } else {
-        resultDiv.textContent = `Invalid US number: ${userInput}`;
-        resultDiv.style.color = "red";
-    }
-}
-
-function clearResults() {
-    document.getElementById("results-div").textContent = "";
-    document.getElementById("user-input").value = "";
-}
+clearBtn.addEventListener("click", () => {
+  resultsDiv.textContent = "";
+});
